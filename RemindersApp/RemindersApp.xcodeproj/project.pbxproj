@@ -14,6 +14,9 @@
 		E41CAD1527CC5BBE00301E52 /* RemindersAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41CAD1427CC5BBE00301E52 /* RemindersAppTests.swift */; };
 		E41CAD1F27CC5BBE00301E52 /* RemindersAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41CAD1E27CC5BBE00301E52 /* RemindersAppUITests.swift */; };
 		E41CAD2127CC5BBE00301E52 /* RemindersAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41CAD2027CC5BBE00301E52 /* RemindersAppUITestsLaunchTests.swift */; };
+		E41CAD2F27CC7E9200301E52 /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41CAD2E27CC7E9200301E52 /* RemindersView.swift */; };
+		E41CAD3127CC810E00301E52 /* NewReminderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41CAD3027CC810E00301E52 /* NewReminderButtonView.swift */; };
+		E41CAD3327CC825F00301E52 /* CreateReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41CAD3227CC825F00301E52 /* CreateReminderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		E41CAD1A27CC5BBE00301E52 /* RemindersAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RemindersAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E41CAD1E27CC5BBE00301E52 /* RemindersAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersAppUITests.swift; sourceTree = "<group>"; };
 		E41CAD2027CC5BBE00301E52 /* RemindersAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E41CAD2E27CC7E9200301E52 /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		E41CAD3027CC810E00301E52 /* NewReminderButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReminderButtonView.swift; sourceTree = "<group>"; };
+		E41CAD3227CC825F00301E52 /* CreateReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReminderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +100,7 @@
 		E41CAD0227CC5BBB00301E52 /* RemindersApp */ = {
 			isa = PBXGroup;
 			children = (
-				E41CAD0327CC5BBB00301E52 /* RemindersAppApp.swift */,
-				E41CAD0527CC5BBB00301E52 /* ContentView.swift */,
+				E41CAD2D27CC7E6A00301E52 /* Views */,
 				E41CAD0727CC5BBE00301E52 /* Assets.xcassets */,
 				E41CAD0927CC5BBE00301E52 /* Preview Content */,
 			);
@@ -125,6 +130,18 @@
 				E41CAD2027CC5BBE00301E52 /* RemindersAppUITestsLaunchTests.swift */,
 			);
 			path = RemindersAppUITests;
+			sourceTree = "<group>";
+		};
+		E41CAD2D27CC7E6A00301E52 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E41CAD0527CC5BBB00301E52 /* ContentView.swift */,
+				E41CAD2E27CC7E9200301E52 /* RemindersView.swift */,
+				E41CAD3027CC810E00301E52 /* NewReminderButtonView.swift */,
+				E41CAD3227CC825F00301E52 /* CreateReminderView.swift */,
+				E41CAD0327CC5BBB00301E52 /* RemindersAppApp.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +275,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41CAD0627CC5BBB00301E52 /* ContentView.swift in Sources */,
+				E41CAD3127CC810E00301E52 /* NewReminderButtonView.swift in Sources */,
 				E41CAD0427CC5BBB00301E52 /* RemindersAppApp.swift in Sources */,
+				E41CAD2F27CC7E9200301E52 /* RemindersView.swift in Sources */,
+				E41CAD3327CC825F00301E52 /* CreateReminderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
