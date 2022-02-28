@@ -8,31 +8,32 @@
 import SwiftUI
 
 struct RemindersView: View {
-  @State var isShowingCreateModal: Bool = false
+    @ObservedObject var itemListVM: RemindersListViewModel = RemindersListViewModel()
+    @State var isShowingCreateModal: Bool = false
 
-  var body: some View {
-    VStack {
-      List {
-        Section {
-          ForEach(1...10, id: \.self) { _ in
-            Text("Cell List")
-          }
+    var body: some View {
+        VStack {
+            List {
+                Section {
+                    ForEach(itemListVM.listItems, id: \.title) { item in
+                        Text(item.title)
+                    }
+                }
+            }
+            .listStyle(.plain)
+            .background(.white)
+            HStack {
+                NewReminderButtonView(isShowingCreateView: $isShowingCreateModal)
+                Spacer()
+            }
+            .padding(.leading)
         }
-      }
-      .listStyle(.plain)
-      .background(.white)
-      HStack {
-        NewReminderButtonView(isShowingCreateView: $isShowingCreateModal)
-        Spacer()
-      }
-      .padding(.leading)
+        .navigationBarTitle(Text("Reminders"))
     }
-    .navigationBarTitle(Text("Reminders"))
-  }
 }
 
 struct RemindersView_Previews: PreviewProvider {
-  static var previews: some View {
-    RemindersView()
-  }
+    static var previews: some View {
+        RemindersView()
+    }
 }
