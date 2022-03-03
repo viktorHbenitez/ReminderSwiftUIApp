@@ -17,10 +17,29 @@ class CreateReminderListViewModel: ObservableObject {
     var notes: String = ""
     var dueDate: Date = Date()
     @Published var priority: ReminderPriority = .none
+    let manager = CoreDataManger.instance
 
-    func saveReminer(using viewContext: NSManagedObjectContext) {
-        print("Title \(text), notes: \(notes), date \(dueDate) priority \(priority)")
-        CoreDataManger.saveData(title: text, notes: notes, date: dueDate, priority: priority, using: viewContext)
+    func saveReminer(isCompleted: Bool = false) {
+//        guard text?.isEmpty, notes?.isEmpty else {
+//            print("text: \(text), note: \(notes) some of them are empty")
+//            return
+//        }
+//        print("Title \(text), notes: \(notes), date \(dueDate) priority \(priority)")
+
+        let item = Reminder(context: manager.context)
+        item.title = text
+        item.notes = notes
+        item.dueDate = dueDate
+        item.priority = priority.rawValue
+        item.isCompleted = isCompleted
+        manager.saveData()
+    }
+
+    func isEmptyReminderItem() -> Bool {
+        guard !text.isEmpty, !notes.isEmpty else {
+            return false
+        }
+        return true
     }
 }
 

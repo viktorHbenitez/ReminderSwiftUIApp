@@ -14,7 +14,7 @@ class ReminderPrioritySelectionListViewModel: ObservableObject {
     // Add the @Published properties to all the properties of the ViewModel that can trigger an update in the UI.
     @Published var selections: Array = Array(repeating: false, count: ReminderPriority.allCases.count)
 
-    func setDefaultArrayitems() {
+    func setDefaultArrayitems() { 
         selections = Array(repeating: false, count: ReminderPriority.allCases.count)
     }
 
@@ -31,7 +31,8 @@ class ReminderPrioritySelectionListViewModel: ObservableObject {
     }
 
     func isSelected(index: Int) -> Bool {
-        selections[index] == true
+        let result = (selections[index] == true)
+        return result
     }
 }
 

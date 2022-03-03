@@ -6,24 +6,30 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct RemindersView: View {
-    @ObservedObject var itemListVM: RemindersListViewModel = RemindersListViewModel()
     @State var isShowingCreateModal: Bool = false
+    @ObservedObject private var itemListVM: RemindersListViewModel
+
+    init(itemViewModel: RemindersListViewModel) {
+        self.itemListVM = itemViewModel
+    }
 
     var body: some View {
         VStack {
             List {
                 Section {
                     ForEach(itemListVM.listItems, id: \.title) { item in
-                        Text(item.title)
+                        ReminderRow(reminder: item)
                     }
+                    .onDelete(perform: itemListVM.deleteReminderItem)
                 }
             }
             .listStyle(.plain)
             .background(.white)
             HStack {
-                NewReminderButtonView(isShowingCreateView: $isShowingCreateModal)
+                NewReminderButtonView(isShowingCreateView: $isShowingCreateModal, itemViewModel: itemListVM)
                 Spacer()
             }
             .padding(.leading)
@@ -34,6 +40,6 @@ struct RemindersView: View {
 
 struct RemindersView_Previews: PreviewProvider {
     static var previews: some View {
-        RemindersView()
+        return RemindersView(itemViewModel: RemindersListViewModel())
     }
 }

@@ -9,12 +9,11 @@ import SwiftUI
 import CoreData
 
 struct CreateReminderView: View {
-    // MARK: - State -
+    // MARK: - @Environment @State @ObservedObject
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @Environment(\.managedObjectContext) var viewContext: NSManagedObjectContext
-
-    @State var shouldRemind: Bool = false
     @ObservedObject private var createReminderVM = CreateReminderListViewModel()
+    @State var shouldRemind: Bool = false
+    @State var isFormCompleted: Bool = false
 
     var body: some View {
         NavigationView {
@@ -45,11 +44,24 @@ struct CreateReminderView: View {
                         Text(createReminderVM.priority.fullDisplay)
                     }
                 }
+                Section {
+                    if isFormCompleted {
+                        Text("Necesitas llenar los campos de texto y nota")
+                            .font(.headline)
+                            .foregroundColor(.blue)
+                    } else {
+                        Text("")
+                    }
+                }
             }
             .background(Color(.systemGroupedBackground))
             .navigationBarTitle(Text("Create Event"), displayMode: .inline)
             .navigationBarItems(trailing: Button(action: {
-                createReminderVM.saveReminer(using: viewContext)
+                guard createReminderVM.isEmptyReminderItem() else {
+                    isFormCompleted.toggle()
+                    return
+                }
+                createReminderVM.saveReminer()
                 presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Save")

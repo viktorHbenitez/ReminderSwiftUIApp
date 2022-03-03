@@ -3,8 +3,9 @@
 import SwiftUI
 
 struct ReminderPrioritySelectionView: View {
-    @ObservedObject private var reminderPrioritySelectionVM = ReminderPrioritySelectionListViewModel()
+    @StateObject private var reminderPrioritySelectionVM = ReminderPrioritySelectionListViewModel()
     @Binding var priority: ReminderPriority
+
     var body: some View {
         List {
             ForEach(0..<ReminderPriority.allCases.count) { index in
@@ -18,6 +19,9 @@ struct ReminderPrioritySelectionView: View {
                             .foregroundColor(.black)
                         Spacer()
 
+//                        if reminderPrioritySelectionVM.selections[index] == true {
+//                            Image(systemName: "checkmark")
+//                        }
                         if reminderPrioritySelectionVM.isSelected(index: index) {
                             Image(systemName: "checkmark")
                         }

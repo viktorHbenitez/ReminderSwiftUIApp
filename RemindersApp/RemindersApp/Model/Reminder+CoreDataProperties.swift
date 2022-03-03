@@ -8,4 +8,8 @@ extension Reminder {
     @NSManaged var notes: String?
     @NSManaged var dueDate: Date?
     @NSManaged var priority: Int16
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Reminder> {
+        return NSFetchRequest<Reminder>(entityName: "Reminder")
+    }
 }
